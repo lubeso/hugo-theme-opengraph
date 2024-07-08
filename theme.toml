@@ -1,0 +1,12 @@
+name = 'OpenGraph'
+license = 'MIT'
+licenselink = 'https://github.com/lubeso/hugo-theme-opengraph/LICENSE'
+description = 'Enables OpenGraph.'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/lubeso/hugo-theme-opengraph'
+
+# If the theme has a single author
+[author]
+  name = 'Luis Becerra Solis'
+  homepage = 'https://www.lubeso.dev/'

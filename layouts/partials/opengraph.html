@@ -1,5 +1,16 @@
-<meta property="og:title" content="{{ .Title }}" />
-<meta property="og:url" content="{{ .URL }}" />
-{{ with .Description }} <meta property="og:description" content="{{ . }}" />{{ end }}
-{{ with .ImageURL }}<meta property="og:image" content="{{ . }}" />{{ end }}
-{{ with .Type }}<meta property="og:type" content="{{ . }}" />{{ end }}
+{{ $openGraph := default site.Params.opengraph .Params.OpenGraph }}
+{{- with default (cond .IsHome site.Title (printf "%s | %s" site.Title .Title)) $openGraph.Title }}
+  <meta property="og:title" content="{{ . }}" />
+{{- end }}
+{{- with $openGraph.Description }}
+  <meta property="og:description" content="{{ . }}" />
+{{- end }}
+{{- with default (cond .IsHome site.BaseURL .Permalink) $openGraph.URL }}
+  <meta property="og:url" content="{{ . }}" />
+{{- end }}
+{{- with default (absURL "images/favicon-512x512.png") $openGraph.Image }}
+  <meta property="og:image" content="{{ . }}" />
+{{- end }}
+{{- with $openGraph.Type }}
+  <meta property="og:type" content="{{ . }}" />
+{{- end }}

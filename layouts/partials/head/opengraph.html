@@ -8,7 +8,7 @@
 {{- with default (cond .IsHome site.BaseURL .Permalink) $openGraph.url }}
   <meta property="og:url" content="{{ . }}" />
 {{- end }}
-{{- with default (absURL "images/favicon-512x512.png") $openGraph.image }}
+{{- with absURL (default "images/favicon-512x512.png" $openGraph.image) }}
   <meta property="og:image" content="{{ . }}" />
 {{- end }}
 {{- with $openGraph.type }}
